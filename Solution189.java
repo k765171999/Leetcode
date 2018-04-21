@@ -1,4 +1,40 @@
-public class Solution189 {
+public class Solution189{
+	public static void main(String[] args) {
+		int[] nums = { 1, 2 };
+		int k = 3;
+		Solution189 s = new Solution189();
+		s.rotate(nums, k);
+		for (int i = 0; i < nums.length; i++) {
+			 System.out.println(nums[i]);
+		}
+	}
+	public void rotate(int[] nums, int k) {
+		int tmp=0;
+		k = k%nums.length;
+		for(int i=0;i<k;i++){
+			tmp = nums[nums.length-1-i];
+			nums[nums.length-1-i] = nums[k-1-i];
+			nums[k-1-i] = tmp;
+		}
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*public class Solution189 {
 	public static void main(String[] args) {
 		int[] nums = { 1, 2 };
 		int k = 3;
@@ -30,7 +66,7 @@ public class Solution189 {
 	}
 }
 
-/*ä¼˜åŒ–æ–¹æ³•1ï¼š
+ÓÅ»¯·½·¨1£º
 
 public class Solution {
     public void rotate(int[] nums, int k) {
@@ -45,7 +81,7 @@ public class Solution {
 }
 
 
-ä¼˜åŒ–æ–¹æ³•2ï¼š
+ÓÅ»¯·½·¨2£º
 public class Solution {
     public void rotate(int[] nums, int k) {
         k %= nums.length;
