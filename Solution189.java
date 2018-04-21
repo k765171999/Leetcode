@@ -1,6 +1,6 @@
-public class Solution189{
+public class Solution189 {
 	public static void main(String[] args) {
-		int[] nums = { 1, 2 };
+		int[] nums = {-1};
 		int k = 3;
 		Solution189 s = new Solution189();
 		s.rotate(nums, k);
@@ -9,16 +9,50 @@ public class Solution189{
 		}
 	}
 	public void rotate(int[] nums, int k) {
-		int tmp=0;
-		k = k%nums.length;
-		for(int i=0;i<k;i++){
-			tmp = nums[nums.length-1-i];
-			nums[nums.length-1-i] = nums[k-1-i];
-			nums[k-1-i] = tmp;
+		k=k%nums.length;
+		sort(nums, 0, nums.length-1);
+		sort(nums, 0, k-1);
+		sort(nums, k, nums.length-1);
+	}
+	public void sort(int[] nums,int start,int end){
+		while(end>start){
+			int tmp = nums[start];
+			nums[start]=nums[end];
+			nums[end]=tmp;
+			end--;
+			start++;
 		}
-    }
-}
+	}
+}	
+	/*Original List                   : 1 2 3 4 5 6 7
+After reversing all numbers     : 7 6 5 4 3 2 1
+After reversing first k numbers : 5 6 7 4 3 2 1
+After revering last n-k numbers : 5 6 7 1 2 3 4 --> Result*/
+	
+	
+	
+	
 
+/*	public void rotate(int[] nums, int k) {
+		int[] tmp = new int[k];
+		if(k>nums.length){
+			k= k-nums.length;
+		}
+			for (int i = 0; i < k; i++) {
+				tmp[i] = nums[nums.length - 1 - i];
+				// System.out.println(tmp[i]);
+			}
+			for (int i = nums.length-1; i > k-1; i--) {
+				nums[i] = nums[i-k];
+//				System.out.println(nums[i]);
+			}
+			for (int i = 0; i < k; i++) {
+				nums[k - 1 - i] = tmp[i];
+				// System.out.println(nums[k-1-i]);
+			}
+		
+	}
+}*/
 
 
 
